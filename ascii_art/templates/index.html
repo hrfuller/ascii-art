@@ -5,16 +5,53 @@
     <title>Image to ascii converter</title>
   <link rel="stylesheet" href="static/bootstrap.min.css" type="text/css">
   <script src="static/jquery-3.1.1.min.js" type="text/javascript"></script>
+  <style>
+    pre.art {
+      line-height: 55%;
+      font-size: 40%;
+      background: white;
+      border: none;
+    }
+  </style>
   </head>
   <body>
   <script type="text/javascript">
-   function autorun() {
-    
-   }
-   if (window.addEventListener) window.addEventListener("load", autorun, false);
-   else if (window.attachEvent) window.attachEvent("onload", autorun);
-   else window.onload = autorun;
+    var file;
+    function addFile(files) {
+      file=files[0];
+      console.log("updated file")
+    };
+    function handleSuccess(data) {
+      $('#ascii_art').addClass('art')
+      $('#ascii_art').text(data.art);
+    }
+    function handleError(xhr, stat, err) {
+      $('#ascii_art').removeClass('art')
+      $('#ascii_art').text(xhr.responseText);
+    }
+
+    function submitForm() {
+      console.log("calling submit form")
+      var form = new FormData();
+      form.append('file', file);
+      console.log("submitting form");
+      $.ajax('/artify', {
+          method: 'POST',
+          data: form,
+          dataType: 'json',
+          processData: false,
+          contentType: false,
+          success: handleSuccess,
+          error: handleError,
+        })
+    }
   </script>
+
+  <div class="col-md-12">
+      <input type="file" id="fileUploader" onchange="addFile(this.files)">
+      <button class="btn btn-info" id="submit" onclick="submitForm()">ASCII-ify!</button>
+    <pre class="art" id="ascii_art"></pre>
+  </div>
 
   </body>
 </html>
