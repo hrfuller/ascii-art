@@ -92,3 +92,4 @@ bin/
 include/
 local/
 lib/
+pip-selfcheck.json
