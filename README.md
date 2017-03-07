@@ -9,7 +9,7 @@ Installing dependancies
     * Redhat: `sudo yum install python-pip`
     * OSX: `brew install python-pip`
 2. Install virtualenv: `pip install virtualenv`
-3. Initialize a virtualenv in toplevel ascii_art directory:
+3. Initialize a virtualenv in toplevel ascii-art directory:
 `virtualenv ./`
 4. Activate the virtualenv
 `source bin/activate`
