@@ -16,7 +16,7 @@ Installing dependancies
 5. Install package requirements 
 `$ pip install -r requirements.txt`
 
-Running Local Server
+Running Test Server
 ------------------------------------------------
 1. Setup Flask environment variables:
     * `$ export FLASK_APP=ascii_art/ascii_art.py`
@@ -25,6 +25,17 @@ Running Local Server
 4. Run Flask server: `$ flask run`
 
 The server should now be running on `localhost:5000`
+
+Running Production Server
+------------------------------------------------
+
+We can use Gunicorn to run multiple workers of our app.
+For example:
+
+`$ gunicorn -w 4 -b 127.0.0.1:4000 ascii_art.ascii_art:app`
+
+Of course the number of workers and port binding can be configured
+as desired.
 
 Using the API
 ------------------------------------------------
@@ -56,7 +67,7 @@ to `localhost:5000/` in your browser to use.
 Running API tests
 ------------------------------------------------
 
-1. Follow steps for running the local server.
+1. Follow steps for running the test server above.
 2. run `$ nosetests tests/`
 
 Future Improvements
