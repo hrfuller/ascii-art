@@ -44,7 +44,7 @@ This simple API has only one endpoint.
 
 Endpoint | Methods | Accepts                                   | 200 JSON
 ---------|---------|-------------------------------------------|--------------
-/artify  | POST    | mutlipart file upload with one `file` key | '{"art": "ascii-art-string"}'
+/artify  | POST    | mutlipart file upload with one key: "file" | '{"art": "ascii-art-string"}'
 
 ###Return Values:
 
@@ -63,6 +63,18 @@ returned and an error message is passed in the response body.
 
 A simple UI is provided for ASCII-ifying and viewing pleasure. Simply navigate
 to `localhost:5000/` in your browser to use.
+
+###Example using Python requests:
+
+```python
+>>> import requests
+>>> url = 'http://localhost:4000/artify'
+>>> image = open('tests/fixtures/image', 'rb')
+>>> response = requests.post(url, files={'file': image})
+>>> response.status_code
+200
+```
+
 
 Running API tests
 ------------------------------------------------

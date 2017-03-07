@@ -9,7 +9,6 @@ artify_endpoint = test_url + 'artify'
 def test_no_file():
 
     r = requests.post(artify_endpoint)
-
     assert r.status_code == 400
 
 
