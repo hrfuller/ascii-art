@@ -32,7 +32,7 @@ Running Production Server
 We can use Gunicorn to run multiple workers of our app.
 For example:
 
-`gunicorn -w 4 -b 127.0.0.1:4000 ascii_art.ascii_art:app`
+`gunicorn -w 4 -b 127.0.0.1:5000 ascii_art.ascii_art:app`
 
 Of course the number of workers and port binding can be configured
 as desired.
