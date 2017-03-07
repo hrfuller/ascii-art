@@ -5,24 +5,24 @@ Installing dependancies
 ------------------------------------------------
 
 1. Install `python-pip` from your package manager
-    * Debian: `$ sudo apt-get install python-pip`
-    * Redhat: `$ sudo yum install python-pip`
-    * OSX: `$ brew install python-pip`
+    * Debian: `sudo apt-get install python-pip`
+    * Redhat: `sudo yum install python-pip`
+    * OSX: `brew install python-pip`
 2. Install virtualenv: `pip install virtualenv`
 3. Initialize a virtualenv in toplevel ascii_art directory:
-`$ virtualenv ./`
+`virtualenv ./`
 4. Activate the virtualenv
-`$ source bin/activate`
+`source bin/activate`
 5. Install package requirements 
-`$ pip install -r requirements.txt`
+`pip install -r requirements.txt`
 
 Running Test Server
 ------------------------------------------------
 1. Setup Flask environment variables:
-    * `$ export FLASK_APP=ascii_art/ascii_art.py`
+    * `export FLASK_APP=ascii_art/ascii_art.py`
 2. Move to directory containing this README
-3. Start virtualenv: `$ source bin/activate`
-4. Run Flask server: `$ flask run`
+3. Start virtualenv: `source bin/activate`
+4. Run Flask server: `flask run`
 
 The server should now be running on `localhost:5000`
 
@@ -32,7 +32,7 @@ Running Production Server
 We can use Gunicorn to run multiple workers of our app.
 For example:
 
-`$ gunicorn -w 4 -b 127.0.0.1:4000 ascii_art.ascii_art:app`
+`gunicorn -w 4 -b 127.0.0.1:4000 ascii_art.ascii_art:app`
 
 Of course the number of workers and port binding can be configured
 as desired.
@@ -44,14 +44,14 @@ This simple API has only one endpoint.
 
 Endpoint | Methods | Accepts                                   | 200 JSON
 ---------|---------|-------------------------------------------|--------------
-/artify  | POST    | mutlipart file upload with one `file` key | "{"art": <ascii-art-string>}"
+/artify  | POST    | mutlipart file upload with one `file` key | '{"art": "ascii-art-string"}'
 
 ###Return Values:
 
 *200*: On success a JSON object with one key `art` whose value is the ASCII art
 string is returned. The ascii string is scaled to a maximum width or height of 256
-characters, while the aspect ratio is maintained. The string is  newlines
-seperated where each line represents one row of the rasterized image from top
+characters, while the aspect ratio is maintained. The string is newline
+seperated, where each line represents one row of the rasterized image from top
 to bottom.
 
 *400*: If there was a problem with the uploaded file, a BAD REQUEST status is
