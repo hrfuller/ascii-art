@@ -48,13 +48,13 @@ Endpoint | Methods | Accepts                                   | 200 JSON
 
 ###Return Values:
 
-200: On success a JSON object with one key `art` whose value is the ASCII art
+*200*: On success a JSON object with one key `art` whose value is the ASCII art
 string is returned. The ascii string is scaled to a maximum width or height of 256
 characters, while the aspect ratio is maintained. The string is  newlines
 seperated where each line represents one row of the rasterized image from top
 to bottom.
 
-400: If there was a problem with the uploaded file, a BAD REQUEST status is
+*400*: If there was a problem with the uploaded file, a BAD REQUEST status is
 returned and an error message is passed in the response body.
 
 ###Example (requires cURL):
